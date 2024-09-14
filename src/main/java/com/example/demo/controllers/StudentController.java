@@ -45,10 +45,10 @@ public class StudentController {
         return ResponseEntity.ok(student.get());
     }
 
-    @ExceptionHandler
-    public ResponseEntity<ErrorResponse> handleException(Exception ex) {
-        var error = new ErrorResponse(500, ex.getMessage(), System.currentTimeMillis());
-
-        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+//    @ExceptionHandler
+//    public ResponseEntity<ErrorResponse> handleException(Exception ex) {
+//        var error = new ErrorResponse(500, ex.getMessage(), System.currentTimeMillis());
+//
+//        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+//    }
 }
