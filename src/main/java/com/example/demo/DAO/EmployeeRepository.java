@@ -35,6 +35,10 @@ public class EmployeeRepository implements IBaseRepository<Employee> {
 
     @Override
     public Employee update(Employee employee) {
+        if (employee.getId() == 0) {
+            throw new IllegalArgumentException("Invalid Id");
+        }
+
         return entityManager.merge(employee);
     }
 
