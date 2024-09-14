@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.models.Employee;
+import com.example.demo.models.EmployeeDto;
 import com.example.demo.models.ErrorResponse;
 import com.example.demo.services.IEmployeeService;
 import org.springframework.http.HttpStatus;
@@ -40,20 +41,20 @@ public class EmployeeController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> Post(@RequestBody Employee model) {
+    public ResponseEntity<?> Post(@RequestBody EmployeeDto model) {
 
-        employeeService.add(model);
+        var item = employeeService.add(model);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(model.getId())
+                .buildAndExpand(item.getId())
                 .toUri();
 
         return ResponseEntity.created(location).build();
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<?> Patch(@RequestBody Employee model, @PathVariable int id) {
+    public ResponseEntity<?> Patch(@RequestBody EmployeeDto model, @PathVariable int id) {
 
         employeeService.update(id, model);
 

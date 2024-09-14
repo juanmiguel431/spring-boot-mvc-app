@@ -4,6 +4,7 @@ import com.example.demo.DAO.EmployeeRepository;
 import com.example.demo.infrastructure.ApplicationException;
 import com.example.demo.infrastructure.ErrorType;
 import com.example.demo.models.Employee;
+import com.example.demo.models.EmployeeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,13 +33,19 @@ public class EmployeeService implements IEmployeeService {
 
     @Transactional
     @Override
-    public void add(Employee model) {
-        employeeRepository.add(model);
+    public Employee add(EmployeeDto model) {
+        var employee = new Employee();
+        employee.setFirstName(model.getFirstName());
+        employee.setLastName(model.getLastName());
+        employee.setEmail(model.getEmail());
+        employeeRepository.add(employee);
+
+        return employee;
     }
 
     @Transactional
     @Override
-    public Employee update(int id, Employee model) {
+    public Employee update(int id, EmployeeDto model) {
 
         var item = getById(id);
 
