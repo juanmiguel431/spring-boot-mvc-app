@@ -1,11 +1,11 @@
 package com.example.demo.controllers;
 
+import com.example.demo.models.ErrorResponse;
 import com.example.demo.models.Student;
 import jakarta.annotation.PostConstruct;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +34,18 @@ public class StudentController {
     @GetMapping("/students/{id}")
     public Student getById(@PathVariable int id) {
         var student = students.stream().filter(s -> s.getId() == id).findFirst();
+
+        if (student.isEmpty()) {
+            throw new RuntimeException("Student with id " + id + " not found");
+        }
+
         return student.get();
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<ErrorResponse> handleException(RuntimeException ex) {
+        var error = new ErrorResponse(500, ex.getMessage(), System.currentTimeMillis());
+
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
