@@ -73,8 +73,7 @@ public class EmployeeController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> Delete(@PathVariable int id) {
 
-        var item = employeeService.getById(id);
-        employeeService.delete(item);
+        employeeService.deleteById(id);
 
         return ResponseEntity.noContent().build();
     }

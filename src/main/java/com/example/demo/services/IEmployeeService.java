@@ -9,5 +9,5 @@ public interface IEmployeeService {
     Employee getById(int id);
     void add(Employee model);
     Employee update(Employee model);
-    void delete(Employee model);
+    void deleteById(int id);
 }

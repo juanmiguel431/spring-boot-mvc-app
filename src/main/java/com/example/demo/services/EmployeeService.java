@@ -1,6 +1,8 @@
 package com.example.demo.services;
 
 import com.example.demo.DAO.EmployeeRepository;
+import com.example.demo.infrastructure.ApplicationException;
+import com.example.demo.infrastructure.ErrorType;
 import com.example.demo.models.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +44,13 @@ public class EmployeeService implements IEmployeeService {
 
     @Transactional
     @Override
-    public void delete(Employee model) {
-        employeeRepository.delete(model);
+    public void deleteById(int id) {
+        var item = getById(id);
+
+        if (item == null) {
+            throw new ApplicationException(ErrorType.NotFound, "Employee with id " + id + " not found");
+        }
+
+        employeeRepository.delete(item);
     }
 }
