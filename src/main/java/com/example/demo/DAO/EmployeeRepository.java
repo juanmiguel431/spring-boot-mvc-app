@@ -2,6 +2,7 @@ package com.example.demo.DAO;
 
 import com.example.demo.models.Employee;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +29,12 @@ public class EmployeeRepository implements IBaseRepository<Employee> {
     public Employee getById(int id) {
         var query = entityManager.createQuery("from Employee where id=:id", Employee.class);
         query.setParameter("id", id);
-        return query.getSingleResult();
+
+        try {
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     @Transactional
