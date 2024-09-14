@@ -27,19 +27,20 @@ public class StudentController {
     }
 
     @GetMapping("/students")
-    public List<Student> getAll() {
-        return students;
+    public ResponseEntity<List<Student>> getAll() {
+
+        return ResponseEntity.ok(students);
     }
 
     @GetMapping("/students/{id}")
-    public Student getById(@PathVariable int id) {
+    public ResponseEntity<Student> getById(@PathVariable int id) {
         var student = students.stream().filter(s -> s.getId() == id).findFirst();
 
         if (student.isEmpty()) {
-            throw new RuntimeException("Student with id " + id + " not found");
+            return ResponseEntity.notFound().build();
         }
 
-        return student.get();
+        return ResponseEntity.ok(student.get());
     }
 
     @ExceptionHandler
