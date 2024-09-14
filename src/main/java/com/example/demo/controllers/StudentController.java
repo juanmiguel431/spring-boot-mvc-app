@@ -33,7 +33,7 @@ public class StudentController {
     }
 
     @GetMapping("/students/{id}")
-    public ResponseEntity getById(@PathVariable int id) {
+    public ResponseEntity<?> getById(@PathVariable int id) {
         var student = students.stream().filter(s -> s.getId() == id).findFirst();
 
         if (student.isEmpty()) {
