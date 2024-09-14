@@ -1,8 +1,8 @@
 package com.example.demo.controllers;
 
-import com.example.demo.DAO.EmployeeRepository;
 import com.example.demo.models.Employee;
 import com.example.demo.models.ErrorResponse;
+import com.example.demo.services.IEmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,21 +16,21 @@ import java.util.List;
 @RequestMapping("/api/employees")
 public class EmployeeController {
 
-    private final EmployeeRepository employeeRepository;
+    private final IEmployeeService employeeService;
 
-    public EmployeeController(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
+    public EmployeeController(IEmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
     @GetMapping("")
     public ResponseEntity<List<Employee>> GetAll() {
-        var items = employeeRepository.getAll();
+        var items = employeeService.getAll();
         return ResponseEntity.ok(items);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> GetById(@PathVariable int id) {
-        var item = employeeRepository.getById(id);
+        var item = employeeService.getById(id);
 
         if (item == null) {
             var error = new ErrorResponse(404, "Employee with the id " + id + " was not found", System.currentTimeMillis());
