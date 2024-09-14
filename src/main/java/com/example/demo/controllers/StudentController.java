@@ -33,11 +33,13 @@ public class StudentController {
     }
 
     @GetMapping("/students/{id}")
-    public ResponseEntity<Student> getById(@PathVariable int id) {
+    public ResponseEntity getById(@PathVariable int id) {
         var student = students.stream().filter(s -> s.getId() == id).findFirst();
 
         if (student.isEmpty()) {
-            return ResponseEntity.notFound().build();
+            var error = new ErrorResponse(404, "Student with the id " + id + " was not found", System.currentTimeMillis());
+            return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+//            return ResponseEntity.notFound().build();
         }
 
         return ResponseEntity.ok(student.get());
