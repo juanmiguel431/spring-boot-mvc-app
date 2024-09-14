@@ -5,7 +5,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -37,23 +36,18 @@ public class EmployeeRepository implements IBaseRepository<Employee> {
         }
     }
 
-    @Transactional
     @Override
     public void add(Employee employee) {
         entityManager.persist(employee);
     }
 
-    @Transactional
     @Override
     public Employee update(Employee employee) {
         return entityManager.merge(employee);
     }
 
-    @Transactional
     @Override
-    public int deleteById(int id) {
-        var query = entityManager.createQuery("delete from Employee where id=:id", Employee.class);
-        query.setParameter("id", id);
-        return query.executeUpdate();
+    public void delete(Employee employee) {
+        entityManager.remove(employee);
     }
 }

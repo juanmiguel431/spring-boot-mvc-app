@@ -5,11 +5,10 @@ import com.example.demo.models.ErrorResponse;
 import com.example.demo.services.IEmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -38,5 +37,45 @@ public class EmployeeController {
         }
 
         return ResponseEntity.ok(item);
+    }
+
+    @PostMapping("")
+    public ResponseEntity<?> Post(@RequestBody Employee model) {
+
+        employeeService.add(model);
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(model.getId())
+                .toUri();
+
+        return ResponseEntity.created(location).build();
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> Patch(@RequestBody Employee model, @PathVariable int id) {
+
+        var item = employeeService.getById(id);
+
+        if (item == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        item.setFirstName(model.getFirstName());
+        item.setLastName(model.getLastName());
+        item.setEmail(model.getEmail());
+
+        employeeService.update(item);
+
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> Delete(@PathVariable int id) {
+
+        var item = employeeService.getById(id);
+        employeeService.delete(item);
+
+        return ResponseEntity.noContent().build();
     }
 }

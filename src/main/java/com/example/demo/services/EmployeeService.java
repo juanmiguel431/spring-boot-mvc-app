@@ -4,6 +4,7 @@ import com.example.demo.DAO.EmployeeRepository;
 import com.example.demo.models.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,5 +26,23 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public Employee getById(int id) {
         return employeeRepository.getById(id);
+    }
+
+    @Transactional
+    @Override
+    public void add(Employee model) {
+        employeeRepository.add(model);
+    }
+
+    @Transactional
+    @Override
+    public Employee update(Employee model) {
+        return employeeRepository.update(model);
+    }
+
+    @Transactional
+    @Override
+    public void delete(Employee model) {
+        employeeRepository.delete(model);
     }
 }
