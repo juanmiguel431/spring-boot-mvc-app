@@ -55,17 +55,7 @@ public class EmployeeController {
     @PatchMapping("/{id}")
     public ResponseEntity<?> Patch(@RequestBody Employee model, @PathVariable int id) {
 
-        var item = employeeService.getById(id);
-
-        if (item == null) {
-            return ResponseEntity.notFound().build();
-        }
-
-        item.setFirstName(model.getFirstName());
-        item.setLastName(model.getLastName());
-        item.setEmail(model.getEmail());
-
-        employeeService.update(item);
+        employeeService.update(id, model);
 
         return ResponseEntity.ok().build();
     }

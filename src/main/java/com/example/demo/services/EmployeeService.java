@@ -38,8 +38,19 @@ public class EmployeeService implements IEmployeeService {
 
     @Transactional
     @Override
-    public Employee update(Employee model) {
-        return employeeRepository.update(model);
+    public Employee update(int id, Employee model) {
+
+        var item = getById(id);
+
+        if (item == null) {
+            throw new ApplicationException(ErrorType.NotFound, "Employee with id " + id + " not found");
+        }
+
+        item.setFirstName(model.getFirstName());
+        item.setLastName(model.getLastName());
+        item.setEmail(model.getEmail());
+
+        return employeeRepository.update(item);
     }
 
     @Transactional

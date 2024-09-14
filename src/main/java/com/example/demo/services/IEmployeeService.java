@@ -8,6 +8,6 @@ public interface IEmployeeService {
     List<Employee> getAll();
     Employee getById(int id);
     void add(Employee model);
-    Employee update(Employee model);
+    Employee update(int id, Employee model);
     void deleteById(int id);
 }
