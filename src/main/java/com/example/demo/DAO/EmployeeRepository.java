@@ -2,7 +2,6 @@ package com.example.demo.DAO;
 
 import com.example.demo.models.Employee;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.NoResultException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -26,14 +25,7 @@ public class EmployeeRepository implements IBaseRepository<Employee> {
 
     @Override
     public Employee getById(int id) {
-        var query = entityManager.createQuery("from Employee where id=:id", Employee.class);
-        query.setParameter("id", id);
-
-        try {
-            return query.getSingleResult();
-        } catch (NoResultException e) {
-            return null;
-        }
+        return entityManager.find(Employee.class, id);
     }
 
     @Override
