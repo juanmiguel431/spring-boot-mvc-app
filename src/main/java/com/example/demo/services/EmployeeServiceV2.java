@@ -1,6 +1,6 @@
 package com.example.demo.services;
 
-import com.example.demo.DAO.EmployeeV2Repository;
+import com.example.demo.DAO.EmployeeJpaRepository;
 import com.example.demo.infrastructure.ApplicationException;
 import com.example.demo.infrastructure.ErrorType;
 import com.example.demo.models.Employee;
@@ -13,10 +13,10 @@ import java.util.List;
 @Service
 public class EmployeeServiceV2 implements IEmployeeService {
 
-    private final EmployeeV2Repository employeeRepository;
+    private final EmployeeJpaRepository employeeRepository;
 
     @Autowired
-    public EmployeeServiceV2(EmployeeV2Repository employeeRepository) {
+    public EmployeeServiceV2(EmployeeJpaRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 
