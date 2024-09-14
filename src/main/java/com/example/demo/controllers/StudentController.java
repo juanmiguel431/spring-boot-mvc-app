@@ -46,7 +46,7 @@ public class StudentController {
     }
 
     @ExceptionHandler
-    public ResponseEntity<ErrorResponse> handleException(RuntimeException ex) {
+    public ResponseEntity<ErrorResponse> handleException(Exception ex) {
         var error = new ErrorResponse(500, ex.getMessage(), System.currentTimeMillis());
 
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
