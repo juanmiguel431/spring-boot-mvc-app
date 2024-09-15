@@ -1,4 +1,4 @@
-package com.example.demo.controllers;
+package com.example.demo.restControllers;
 
 import com.example.demo.models.Employee;
 import com.example.demo.models.EmployeeDto;

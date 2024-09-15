@@ -1,4 +1,4 @@
-package com.example.demo.controllers;
+package com.example.demo.restControllers;
 
 import com.example.demo.models.ErrorResponse;
 import com.example.demo.models.Student;
