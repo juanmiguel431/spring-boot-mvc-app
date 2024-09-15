@@ -50,8 +50,10 @@ public class SecurityConfig {
                     .requestMatchers(HttpMethod.DELETE, "/api/v2/employees/**").hasRole("Admin");
         });
 
+        // Use HTTP Basic Authentication
         http.httpBasic(Customizer.withDefaults());
 
+        // Disable Cross Site Request Forgery (CSRF)
         http.csrf(AbstractHttpConfigurer::disable);
 
         return http.build();
