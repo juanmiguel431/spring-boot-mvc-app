@@ -70,7 +70,8 @@ public class SecurityConfig {
                     .requestMatchers(HttpMethod.GET, "/api/v2/employees/**").hasRole("Employee")
                     .requestMatchers(HttpMethod.POST, "/api/v2/employees").hasRole("Manager")
                     .requestMatchers(HttpMethod.PATCH, "/api/v2/employees/**").hasRole("Manager")
-                    .requestMatchers(HttpMethod.DELETE, "/api/v2/employees/**").hasRole("Admin");
+                    .requestMatchers(HttpMethod.DELETE, "/api/v2/employees/**").hasRole("Admin")
+                    .anyRequest().permitAll(); // Allow access to any other route not specified in this file.
         });
 
         // Use HTTP Basic Authentication
