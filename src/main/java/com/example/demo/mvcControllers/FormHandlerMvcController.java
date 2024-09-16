@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/user-create")
@@ -18,7 +19,9 @@ public class FormHandlerMvcController {
     }
 
     @GetMapping("/process-form")
-    public String processForm(HttpServletRequest request, Model model) {
+    public String processForm(HttpServletRequest request, @RequestParam("username") String username, Model model) {
+
+        System.out.println(username);
 
         var name = request.getParameter("username");
 
