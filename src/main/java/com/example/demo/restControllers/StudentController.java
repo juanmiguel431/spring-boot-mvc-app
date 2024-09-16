@@ -21,9 +21,9 @@ public class StudentController {
     @PostConstruct
     public void loadData() {
         students = new ArrayList<>();
-        students.add(new Student(1, "Juan Miguel", "Paulino Carpio", "juanmiguel431@gmail.com", null));
-        students.add(new Student(2, "Luis Miguel", "Paulino Carpio", "luismiguel@gmail.com", null));
-        students.add(new Student(3, "Eduar", "Paulino Carpio", "eduar@gmail.com", null));
+        students.add(new Student(1, "Juan Miguel", "Paulino Carpio", "juanmiguel431@gmail.com"));
+        students.add(new Student(2, "Luis Miguel", "Paulino Carpio", "luismiguel@gmail.com"));
+        students.add(new Student(3, "Eduar", "Paulino Carpio", "eduar@gmail.com"));
     }
 
     @GetMapping("/students")

@@ -5,27 +5,31 @@
   <title>Process Student Form</title>
 </head>
 <body>
-  Processing form
+<h1>Processing form</h1>
 
 <!--  <br>-->
 
   <h2>Student</h2>
-  firstName: <span th:text="${param.firstName}"></span>
+  First name: <span th:text="${param.firstName}"></span>
   <br>
-  lastName: <span th:text="${param.lastName}"></span>
+  Last name: <span th:text="${param.lastName}"></span>
   <br>
-  email: <span th:text="${param.email}"></span>
+  Email: <span th:text="${param.email}"></span>
   <br>
-  country: <span th:text="${model.country}"></span>
+  Country: <span th:text="${model.country}"></span>
+  <br>
+  Favorite programming langauge: <span th:text="${model.country}"></span>
 <!--  <br>-->
 
   <h2>Using the model</h2>
-  firstName <span th:text="${model.firstName}"></span>
+  First name: <span th:text="${model.firstName}"></span>
   <br>
-  lastName <span th:text="${model.lastName}"></span>
+  Last name: <span th:text="${model.lastName}"></span>
   <br>
-  email <span th:text="${model.email}"></span>
+  Email: <span th:text="${model.email}"></span>
   <br>
-  country <span th:text="${model.country}"></span>
+  Country: <span th:text="${model.country}"></span>
+  <br>
+  Favorite programming language: <span th:text="${model.favoriteLanguage}"></span>
 </body>
 </html>

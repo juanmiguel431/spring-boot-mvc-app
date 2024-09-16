@@ -6,19 +6,19 @@ public class Student {
     private String lastName;
     private String email;
     private String country;
+    private String favoriteLanguage;
 
     public Student() {
     }
 
-    public Student(String firstName, String lastName, String email, String country) {
+    public Student(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.country = country;
     }
 
-    public Student(int id, String firstName, String lastName, String email, String country) {
-        this(firstName, lastName, email, country);
+    public Student(int id, String firstName, String lastName, String email) {
+        this(firstName, lastName, email);
         this.id = id;
     }
 
@@ -62,6 +62,14 @@ public class Student {
         this.country = country;
     }
 
+    public String getFavoriteLanguage() {
+        return favoriteLanguage;
+    }
+
+    public void setFavoriteLanguage(String favoriteLanguage) {
+        this.favoriteLanguage = favoriteLanguage;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -70,6 +78,7 @@ public class Student {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", country='" + country + '\'' +
+                ", favoriteLanguage='" + favoriteLanguage + '\'' +
                 '}';
     }
 }
