@@ -78,7 +78,9 @@ public class SecurityConfig {
         http.httpBasic(Customizer.withDefaults());
 
         // Disable Cross Site Request Forgery (CSRF)
-        http.csrf(AbstractHttpConfigurer::disable);
+        http.csrf(csrfConfigurer -> {
+            csrfConfigurer.ignoringRequestMatchers("/api/**");
+        });
 
         return http.build();
     }
