@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ShowForm</title>
+</head>
+<body>
+  <form method="GET" th:action="@{/user-create/process-form}">
+    <label for="username">Username</label>
+    <input placeholder="What's your username?" type="text" id="username" name="username">
+
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
