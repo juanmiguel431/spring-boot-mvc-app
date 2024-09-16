@@ -4,10 +4,7 @@ import com.example.demo.models.Member;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/user-create")
@@ -18,7 +15,8 @@ public class FormHandlerMvcController {
         return "showForm";
     }
 
-    @GetMapping("/process-form")
+//    @RequestMapping(value = "/process-form", method = RequestMethod.POST) // This is the same as below
+    @PostMapping("/process-form")
     public String processForm(HttpServletRequest request, @RequestParam("username") String username, Model model) {
 
         System.out.println(username);
