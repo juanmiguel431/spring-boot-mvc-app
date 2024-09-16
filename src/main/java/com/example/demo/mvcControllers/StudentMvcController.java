@@ -20,7 +20,7 @@ public class StudentMvcController {
 
         model.addAttribute("model", student);
 
-        return "studentForm";
+        return "student-form";
     }
 
     @PostMapping("")
@@ -28,6 +28,6 @@ public class StudentMvcController {
 
         model.addAttribute("model", student);
 
-        return "processStudentForm";
+        return "process-student-form";
     }
 }

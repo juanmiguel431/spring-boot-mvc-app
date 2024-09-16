@@ -12,7 +12,7 @@ public class FormHandlerMvcController {
 
     @GetMapping("")
     public String showForm() {
-        return "showForm";
+        return "show-form";
     }
 
 //    @RequestMapping(value = "/process-form", method = RequestMethod.POST) // This is the same as below
@@ -28,6 +28,6 @@ public class FormHandlerMvcController {
 
         model.addAttribute("model", member);
 
-        return "processForm";
+        return "process-form";
     }
 }

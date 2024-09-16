@@ -12,6 +12,6 @@ public class DemoMvcController {
 
         model.addAttribute("dateTime", java.time.LocalDateTime.now());
 
-        return "helloWorld"; // Template name
+        return "hello-world"; // Template name
     }
 }
