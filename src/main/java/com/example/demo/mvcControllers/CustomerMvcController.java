@@ -29,7 +29,7 @@ public class CustomerMvcController {
             return "customer-form";
         }
 
-        model.addAttribute("customer", customer);
+//        model.addAttribute("customer", customer); // Not required because ModelAttribute inject the object into the model.
         return "customer-confirmation";
     }
 }
