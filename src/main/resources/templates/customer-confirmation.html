@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer form</title>
+</head>
+<body>
+
+  <h1>Customer Confirmation</h1>
+
+  <p>
+    The customer is confirmed: <th:block th:text="${customer.firstName} + ' ' + ${customer.lastName}"></th:block>
+  </p>
+
+</body>
+</html>

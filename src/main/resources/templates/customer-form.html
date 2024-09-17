@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer form</title>
+  <link rel="stylesheet" th:href="@{/css/demo.css}">
+</head>
+<body>
+
+  <h1>Customer Form</h1>
+  <form method="POST" th:action="@{/customer}" th:object="${customer}">
+
+    <label for="firstName">First name</label>
+    <input type="text" id="firstName" th:field="*{firstName}">
+    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error"></span>
+
+    <br>
+    <br>
+
+    <label for="lastName">Last name</label>
+    <input type="text" id="lastName" th:field="*{lastName}">
+    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error"></span>
+
+    <br>
+    <br>
+
+    <button type="submit">Submit</button>
+
+  </form>
+</body>
+</html>
