@@ -1,5 +1,7 @@
 package com.example.demo.models;
 
+import java.util.List;
+
 public class Student {
     private int id;
     private String firstName;
@@ -7,6 +9,7 @@ public class Student {
     private String email;
     private String country;
     private String favoriteLanguage;
+    private List<String> favoriteOperativeSystems;
 
     public Student() {
     }
@@ -70,6 +73,14 @@ public class Student {
         this.favoriteLanguage = favoriteLanguage;
     }
 
+    public List<String> getFavoriteOperativeSystems() {
+        return favoriteOperativeSystems;
+    }
+
+    public void setFavoriteOperativeSystems(List<String> favoriteOperativeSystems) {
+        this.favoriteOperativeSystems = favoriteOperativeSystems;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -79,6 +90,7 @@ public class Student {
                 ", email='" + email + '\'' +
                 ", country='" + country + '\'' +
                 ", favoriteLanguage='" + favoriteLanguage + '\'' +
+                ", favoriteOperativeSystems=" + favoriteOperativeSystems +
                 '}';
     }
 }

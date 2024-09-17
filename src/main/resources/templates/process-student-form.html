@@ -16,10 +16,17 @@
   <br>
   Email: <span th:text="${param.email}"></span>
   <br>
-  Country: <span th:text="${model.country}"></span>
+  Country: <span th:text="${param.country}"></span>
   <br>
-  Favorite programming langauge: <span th:text="${model.country}"></span>
-<!--  <br>-->
+  Favorite programming language: <span th:text="${param.favoriteLanguage}"></span>
+  <br>
+  Favorite operative systems:
+  <br>
+  <ul>
+    <li th:each="operativeSystem : ${param.favoriteOperativeSystems}" th:text="${operativeSystem}"></li>
+  </ul>
+
+  <br>
 
   <h2>Using the model</h2>
   First name: <span th:text="${model.firstName}"></span>
@@ -31,5 +38,11 @@
   Country: <span th:text="${model.country}"></span>
   <br>
   Favorite programming language: <span th:text="${model.favoriteLanguage}"></span>
+
+  <br>
+  Favorite programming language:
+  <ul>
+    <li th:each="operativeSystem : ${model.favoriteOperativeSystems}" th:text="${operativeSystem}"></li>
+  </ul>
 </body>
 </html>
