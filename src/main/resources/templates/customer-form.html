@@ -31,6 +31,13 @@
     <br>
     <br>
 
+    <label for="postalCode">Postal code</label>
+    <input type="text" id="postalCode" th:field="*{postalCode}">
+    <span th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}" class="error"></span>
+
+    <br>
+    <br>
+
     <button type="submit">Submit</button>
 
   </form>

@@ -3,6 +3,7 @@ package com.example.demo.models;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 
 public class Customer {
 
@@ -15,6 +16,9 @@ public class Customer {
     @Min(value = 0, message = "Must be greater than or equal to zero.")
     @Max(value = 10, message = "Must be than or equal to 10.")
     private int freePasses;
+
+    @Pattern(regexp = "^[a-zA-Z0-9]{5}", message = "Only 5 chars/digits")
+    private String postalCode;
 
     public Customer() {
     }
@@ -46,6 +50,14 @@ public class Customer {
 
     public void setFreePasses(int freePasses) {
         this.freePasses = freePasses;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     @Override
