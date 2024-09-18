@@ -1,5 +1,7 @@
 package com.example.demo.models;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 
 public class Customer {
@@ -9,6 +11,10 @@ public class Customer {
 
     @NotEmpty(message = "is required")
     private String lastName;
+
+    @Min(value = 0, message = "Must be greater than or equal to zero.")
+    @Max(value = 10, message = "Must be than or equal to 10.")
+    private int freePasses;
 
     public Customer() {
     }
@@ -34,11 +40,20 @@ public class Customer {
         this.lastName = lastName;
     }
 
+    public int getFreePasses() {
+        return freePasses;
+    }
+
+    public void setFreePasses(int freePasses) {
+        this.freePasses = freePasses;
+    }
+
     @Override
     public String toString() {
-        return "Curtomer{" +
-                "firstName=" + firstName +
-                ", lastName=" + lastName +
+        return "Customer{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", freePasses=" + freePasses +
                 '}';
     }
 }
