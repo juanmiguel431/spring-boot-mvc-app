@@ -25,7 +25,7 @@
     <br>
 
     <label for="freePasses">Free passes</label>
-    <input type="number" id="freePasses" th:field="*{freePasses}">
+    <input type="text" id="freePasses" th:field="*{freePasses}">
     <span th:if="${#fields.hasErrors('freePasses')}" th:errors="*{freePasses}" class="error"></span>
 
     <br>
