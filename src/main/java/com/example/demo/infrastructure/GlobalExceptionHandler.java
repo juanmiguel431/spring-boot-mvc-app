@@ -1,6 +1,5 @@
-package com.example.demo.controllers.rest;
+package com.example.demo.infrastructure;
 
-import com.example.demo.infrastructure.ApplicationException;
 import com.example.demo.models.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
