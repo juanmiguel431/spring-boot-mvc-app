@@ -1,4 +1,4 @@
-package com.example.demo.restControllers;
+package com.example.demo.controllers.rest;
 
 import com.example.demo.infrastructure.ApplicationException;
 import com.example.demo.models.ErrorResponse;

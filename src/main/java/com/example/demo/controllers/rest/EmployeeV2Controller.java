@@ -1,9 +1,9 @@
-package com.example.demo.restControllers;
+package com.example.demo.controllers.rest;
 
 import com.example.demo.models.Employee;
 import com.example.demo.models.EmployeeDto;
 import com.example.demo.models.ErrorResponse;
-import com.example.demo.services.IEmployeeService;
+import com.example.demo.services.EmployeeServiceV2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,12 +13,12 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/employees")
-public class EmployeeController {
+@RequestMapping("/api/v2/employees")
+public class EmployeeV2Controller {
 
-    private final IEmployeeService employeeService;
+    private final EmployeeServiceV2 employeeService;
 
-    public EmployeeController(IEmployeeService employeeService) {
+    public EmployeeV2Controller(EmployeeServiceV2 employeeService) {
         this.employeeService = employeeService;
     }
 

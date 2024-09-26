@@ -1,4 +1,4 @@
-package com.example.demo.mvcControllers;
+package com.example.demo.controllers;
 
 import com.example.demo.models.Customer;
 import jakarta.validation.Valid;
