@@ -21,12 +21,12 @@ public class EmployeeServiceV2 implements IEmployeeService {
     }
 
     @Override
-    public List<Employee> getAll() {
+    public List<Employee> findAll() {
         return employeeRepository.findAll();
     }
 
     @Override
-    public Employee getById(int id) {
+    public Employee findById(int id) {
         var employee = employeeRepository.findById(id);
         return employee.orElse(null);
 
@@ -47,7 +47,7 @@ public class EmployeeServiceV2 implements IEmployeeService {
     @Override
     public Employee update(int id, EmployeeDto model) {
 
-        var item = getById(id);
+        var item = findById(id);
 
         if (item == null) {
             throw new ApplicationException(ErrorType.NotFound, "Employee with id " + id + " not found");
@@ -62,7 +62,7 @@ public class EmployeeServiceV2 implements IEmployeeService {
 
     @Override
     public void deleteById(int id) {
-        var item = getById(id);
+        var item = findById(id);
 
         if (item == null) {
             throw new ApplicationException(ErrorType.NotFound, "Employee with id " + id + " not found");

@@ -6,8 +6,8 @@ import com.example.demo.models.EmployeeDto;
 import java.util.List;
 
 public interface IEmployeeService {
-    List<Employee> getAll();
-    Employee getById(int id);
+    List<Employee> findAll();
+    Employee findById(int id);
     Employee add(EmployeeDto model);
     Employee update(int id, EmployeeDto model);
     void deleteById(int id);

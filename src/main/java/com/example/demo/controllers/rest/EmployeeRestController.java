@@ -23,14 +23,14 @@ public class EmployeeRestController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<Employee>> GetAll() {
-        var items = employeeService.getAll();
+    public ResponseEntity<List<Employee>> findAll() {
+        var items = employeeService.findAll();
         return ResponseEntity.ok(items);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> GetById(@PathVariable int id) {
-        var item = employeeService.getById(id);
+    public ResponseEntity<?> findById(@PathVariable int id) {
+        var item = employeeService.findById(id);
 
         if (item == null) {
             var error = new ErrorResponse(404, "Employee with the id " + id + " was not found", System.currentTimeMillis());
@@ -41,7 +41,7 @@ public class EmployeeRestController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> Post(@RequestBody EmployeeDto model) {
+    public ResponseEntity<?> post(@RequestBody EmployeeDto model) {
 
         var item = employeeService.add(model);
 
@@ -54,7 +54,7 @@ public class EmployeeRestController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<?> Patch(@RequestBody EmployeeDto model, @PathVariable int id) {
+    public ResponseEntity<?> patch(@RequestBody EmployeeDto model, @PathVariable int id) {
 
         employeeService.update(id, model);
 
@@ -62,7 +62,7 @@ public class EmployeeRestController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> Delete(@PathVariable int id) {
+    public ResponseEntity<?> deleteById(@PathVariable int id) {
 
         employeeService.deleteById(id);
 
