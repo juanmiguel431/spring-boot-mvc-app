@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/customer")
-public class CustomerMvcController {
+public class CustomerController {
 
     @InitBinder
     public void initBinder(WebDataBinder dataBinder) {

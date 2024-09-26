@@ -13,7 +13,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/student")
-public class StudentMvcController {
+public class StudentController {
 
     @Value("${countries}")
     private List<String> countries;

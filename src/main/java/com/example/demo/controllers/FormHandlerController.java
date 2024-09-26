@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/user-create")
-public class FormHandlerMvcController {
+public class FormHandlerController {
 
     @GetMapping("")
     public String showForm() {

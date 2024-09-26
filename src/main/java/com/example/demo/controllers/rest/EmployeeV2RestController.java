@@ -14,11 +14,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v2/employees")
-public class EmployeeV2Controller {
+public class EmployeeV2RestController {
 
     private final EmployeeServiceV2 employeeService;
 
-    public EmployeeV2Controller(EmployeeServiceV2 employeeService) {
+    public EmployeeV2RestController(EmployeeServiceV2 employeeService) {
         this.employeeService = employeeService;
     }
 

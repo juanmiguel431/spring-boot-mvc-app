@@ -14,7 +14,7 @@ import java.util.List;
 //@Scope("prototype") // Makes a new instance of the controller is created for every request.
 @RestController
 @RequestMapping("/api")
-public class StudentController {
+public class StudentRestController {
 
     private List<Student> students;
 
