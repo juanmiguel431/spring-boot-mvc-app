@@ -1,8 +1,16 @@
 package com.example.demo.models;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class EmployeeDto {
+
+    @NotEmpty
     private String firstName;
+
+    @NotEmpty
     private String lastName;
+
+    @NotEmpty
     private String email;
 
     public EmployeeDto() {
