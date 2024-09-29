@@ -34,16 +34,18 @@
           <td th:text="${employee.lastName}"></td>
           <td th:text="${employee.email}"></td>
           <td>
-            <a class="btn btn-secondary btn-sm" th:href="@{/employees/update/{id}(id=${employee.id})}">Update</a>
-            <form th:method="delete" th:action="@{/employees/{id}(id=${employee.id})}" >
-              <button
-                type="submit"
-                class="btn danger btn-danger btn-sm"
-                onclick="return (confirm('Are you sure? you want to delete this employee?'))"
-              >
-                Delete
-              </button>
-            </form>
+            <div class="d-flex align-items-center gap-2">
+              <a class="btn btn-secondary btn-sm" th:href="@{/employees/update/{id}(id=${employee.id})}">Update</a>
+              <form th:method="delete" th:action="@{/employees/{id}(id=${employee.id})}" >
+                <button
+                  type="submit"
+                  class="btn danger btn-danger btn-sm"
+                  onclick="return (confirm('Are you sure? you want to delete this employee?'))"
+                >
+                  Delete
+                </button>
+              </form>
+            </div>
           </td>
         </tr>
       </tbody>
