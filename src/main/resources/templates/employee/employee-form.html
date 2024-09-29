@@ -11,7 +11,10 @@
   <div class="container">
     <h3>Employee Directory</h3>
     <hr>
-    <form method="POST" action="/employees" th:object="${employee}">
+    <form
+      th:method="@{{method}(method=${id > 0 ? 'PATCH' : 'POST'})}"
+      th:action="${id > 0 ? '/employees/update/' + id : '/employees/add'}"
+      th:object="${employee}">
       <div class="mb-3 w-25">
         <label for="firstName" class="form-label">Firstname</label>
         <input type="text" class="form-control" id="firstName" th:field="*{firstName}">
