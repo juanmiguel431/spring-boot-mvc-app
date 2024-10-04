@@ -6,6 +6,8 @@ import org.springframework.web.filter.HiddenHttpMethodFilter;
 
 @Configuration
 public class WebConfig {
+
+    /// Enables the Web API to handle hiddenHttpMethod Verb automatically
     @Bean
     public HiddenHttpMethodFilter hiddenHttpMethodFilter() {
         return new HiddenHttpMethodFilter();
