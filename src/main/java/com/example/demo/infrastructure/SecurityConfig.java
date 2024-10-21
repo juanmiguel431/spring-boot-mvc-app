@@ -76,7 +76,11 @@ public class SecurityConfig {
             configurer.anyRequest().permitAll(); // Allow access to any other route not specified in this file.
         });
 
-        http.formLogin(Customizer.withDefaults());
+        http.formLogin(form -> {
+            form.loginPage("/login-page");
+            form.loginProcessingUrl("/authenticateTheUser"); // No Controller Request Mapping required for this. We get this for free.
+            form.permitAll();
+        });
 
         // Use HTTP Basic Authentication
         http.httpBasic(Customizer.withDefaults());

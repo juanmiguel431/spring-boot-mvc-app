@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Login Page</title>
+  <link rel="stylesheet" th:href="@{/css/demo.css}">
+</head>
+<body>
+
+<h1>Login</h1>
+<form method="POST" th:action="@{/authenticateTheUser}" th:object="${model}">
+
+<!--  Check for Login errors-->
+  <p th:if="${param.error}">
+    <i class="error" >
+      Sorry, you entered invalid username/password
+    </i>
+  </p>
+
+  <label for="username">Username</label>
+  <input type="text" id="username" th:field="*{username}">
+  <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></span>
+
+  <br>
+  <br>
+
+  <label for="password">Password</label>
+  <input type="password" id="password" th:field="*{password}">
+  <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></span>
+
+  <br>
+  <br>
+
+  <button type="submit">Login</button>
+
+</form>
+</body>
+</html>
