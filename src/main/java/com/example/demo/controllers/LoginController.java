@@ -14,6 +14,7 @@ public class LoginController {
         var dto = new LoginDto();
         model.addAttribute("model", dto);
 
-        return "plain-login";
+        return "fancy-login";
+//        return "plain-login";
     }
 }
