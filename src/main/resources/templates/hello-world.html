@@ -8,5 +8,10 @@
 </head>
 <body>
   <p class="server-time" th:text="'Time on the server is ' + ${dateTime}" />
+
+  <form method="post" th:action="@{/logout}">
+    <button type="submit">Logout</button>
+  </form>
+
 </body>
 </html>

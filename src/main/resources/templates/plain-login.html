@@ -17,6 +17,10 @@
     </i>
   </p>
 
+  <p th:if="${param.logout}">
+    <i>You have been logout.</i>
+  </p>
+
   <label for="username">Username</label>
   <input type="text" id="username" th:field="*{username}">
   <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></span>
