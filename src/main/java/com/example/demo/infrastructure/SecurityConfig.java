@@ -78,6 +78,10 @@ public class SecurityConfig {
             configurer.anyRequest().permitAll(); // Allow access to any other route not specified in this file.
         });
 
+        http.exceptionHandling(configurer -> {
+            configurer.accessDeniedPage("/access-denied");
+        });
+
 //        https://www.bcryptcalculator.com/encode TODO: to manually encode the password
         http.formLogin(form -> {
             form.loginPage("/login-page");
