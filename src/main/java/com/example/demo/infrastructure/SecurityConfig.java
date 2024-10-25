@@ -59,6 +59,28 @@ public class SecurityConfig {
         jdbcUserDetailsManager.setAuthoritiesByUsernameQuery("select user_id, role from roles where user_id=?");
 
         return jdbcUserDetailsManager;
+
+//        Default tables
+//        select * from users;
+//        select * from authorities;
+
+//  create table users
+//  (
+//    username varchar(50) not null
+//        primary key,
+//    password varchar(68) not null,
+//    enabled  tinyint     not null
+//  )
+
+//  create table roles
+//  (
+//    user_id varchar(50) not null,
+//    role    varchar(50) not null,
+//    constraint authorities5_idx_1
+//        unique (user_id, role),
+//    constraint authorities5_ibfk_1
+//        foreign key (user_id) references members (user_id)
+//  )
     }
 
     @Bean
