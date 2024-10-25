@@ -71,7 +71,9 @@ public class SecurityConfig {
                     .requestMatchers(HttpMethod.POST, "/api/v2/employees").hasRole("Manager")
                     .requestMatchers(HttpMethod.PATCH, "/api/v2/employees/**").hasRole("Manager")
                     .requestMatchers(HttpMethod.DELETE, "/api/v2/employees/**").hasRole("Admin")
-                    .requestMatchers(HttpMethod.GET, "/datetime").hasRole("Admin");
+                    .requestMatchers(HttpMethod.GET, "/datetime").hasRole("Admin")
+                    .requestMatchers(HttpMethod.GET, "/leaders/**").hasRole("Manager")
+                    .requestMatchers(HttpMethod.GET, "/systems/**").hasRole("Admin");
 
             configurer.anyRequest().permitAll(); // Allow access to any other route not specified in this file.
         });

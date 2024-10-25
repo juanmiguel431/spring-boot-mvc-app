@@ -14,4 +14,14 @@ public class DemoController {
 
         return "hello-world"; // Template name
     }
+
+    @GetMapping("/leaders")
+    public String getLeaders() {
+        return "leaders";
+    }
+
+    @GetMapping("/systems")
+    public String getSystems() {
+        return "systems";
+    }
 }
