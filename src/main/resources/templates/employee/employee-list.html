@@ -32,11 +32,11 @@
 
     <hr>
 
-    <p>
+    <p sec:authorize="hasRole('Manager')">
       <a th:href="@{/leaders}">Leadership Meeting</a> (Only for Manager Peeps)
     </p>
 
-    <p>
+    <p sec:authorize="hasRole('Admin')">
       <a th:href="@{/systems}">IT Systems Meeting</a> (Only for Admin Peeps)
     </p>
 
