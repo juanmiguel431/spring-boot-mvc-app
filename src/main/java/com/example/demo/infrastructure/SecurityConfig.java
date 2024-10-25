@@ -76,6 +76,7 @@ public class SecurityConfig {
             configurer.anyRequest().permitAll(); // Allow access to any other route not specified in this file.
         });
 
+//        https://www.bcryptcalculator.com/encode TODO: to manually encode the password
         http.formLogin(form -> {
             form.loginPage("/login-page");
             form.loginProcessingUrl("/authenticateTheUser"); // No Controller Request Mapping required for this. We get this for free.
