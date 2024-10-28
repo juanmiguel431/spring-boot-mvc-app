@@ -20,13 +20,19 @@ public class DemoApplication {
 	public CommandLineRunner commandLineRunner(InstructorRepository instructorRepository, InstructorDetailRepository instructorDetailRepository) {
 		return runner -> {
 			System.out.println("Hello world");
+//			createInstructor(instructorRepository);
 
-			var instructor = new Instructor("Juan Miguel", "Paulino Carpio", "juanmiguel431@gmail.com");
-			var instructorDetails = new InstructorDetail("https://www.youtube.com/@juanmiguel431", "Software Engineer");
-
-			instructor.setInstructorDetail(instructorDetails);
-
-			instructorRepository.add(instructor);
+			var instructor = instructorRepository.getById(1);
+			System.out.println(instructor);
 		};
+	}
+
+	private static void createInstructor(InstructorRepository instructorRepository) {
+		var instructor = new Instructor("Juan Miguel", "Paulino Carpio", "juanmiguel431@gmail.com");
+		var instructorDetails = new InstructorDetail("https://www.youtube.com/@juanmiguel431", "Software Engineer");
+
+		instructor.setInstructorDetail(instructorDetails);
+
+		instructorRepository.add(instructor);
 	}
 }
