@@ -1,5 +1,6 @@
 package com.example.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,12 +15,9 @@ public class Course {
     @Column(name = "title")
     private String title;
 
-//    duplicated in mapping for entity  (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
-//    @Column(name = "instructor_id")
-//    private int instructorId;
-
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "instructor_id")
+    @JsonIgnore
     private Instructor instructor;
 
     public Course() {
@@ -28,6 +26,10 @@ public class Course {
     public Course(String title, Instructor instructor) {
         this.title = title;
         this.instructor = instructor;
+    }
+
+    public Course(String title) {
+        this.title = title;
     }
 
     public Long getId() {

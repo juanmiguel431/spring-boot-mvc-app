@@ -1,5 +1,6 @@
 package com.example.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -25,7 +26,10 @@ public class Instructor {
     @OneToOne(mappedBy = "instructor", cascade = CascadeType.ALL)
     private InstructorDetail instructorDetail;
 
-    @OneToMany(mappedBy = "instructor", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "instructor",
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH},
+            fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Course> courses;
 
     public Instructor() {
@@ -106,6 +110,7 @@ public class Instructor {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", instructorDetail=" + instructorDetail +
                 '}';
     }
 }
