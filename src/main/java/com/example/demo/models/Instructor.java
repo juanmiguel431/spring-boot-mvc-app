@@ -2,6 +2,9 @@ package com.example.demo.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "instructors")
 public class Instructor {
@@ -22,7 +25,31 @@ public class Instructor {
     @OneToOne(mappedBy = "instructor", cascade = CascadeType.ALL)
     private InstructorDetail instructorDetail;
 
+    @OneToMany(mappedBy = "instructor", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<Course> courses;
+
     public Instructor() {
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        courses.forEach(course -> {
+            course.setInstructor(this);
+        });
+
+        this.courses = courses;
+    }
+
+    public void addCourse(Course course) {
+        if (this.courses == null) {
+            this.courses = new ArrayList<>();
+        }
+
+        course.setInstructor(this);
+        this.courses.add(course);
     }
 
     public Instructor(String firstName, String lastName, String email) {

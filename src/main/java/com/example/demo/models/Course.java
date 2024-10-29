@@ -18,7 +18,7 @@ public class Course {
 //    @Column(name = "instructor_id")
 //    private int instructorId;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "instructor_id")
     private Instructor instructor;
 
