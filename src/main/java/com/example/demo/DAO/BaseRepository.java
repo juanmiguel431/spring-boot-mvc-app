@@ -8,7 +8,7 @@ import java.util.List;
 public abstract class BaseRepository<T> implements IBaseRepository<T> {
 
     protected final EntityManager entityManager;
-    abstract Class<T> getType();
+    abstract protected Class<T> getType();
 
     public BaseRepository(EntityManager entityManager) {
         this.entityManager = entityManager;

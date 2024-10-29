@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public class EmployeeRepository extends BaseRepository<Employee> implements IBaseRepository<Employee> {
 
     @Override
-    Class<Employee> getType() {
+    protected Class<Employee> getType() {
         return Employee.class;
     }
 
