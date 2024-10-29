@@ -17,7 +17,7 @@ public class Course {
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "instructor_id")
-    @JsonIgnore
+//    @JsonIgnore
     private Instructor instructor;
 
     public Course() {
