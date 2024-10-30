@@ -19,7 +19,10 @@ public class InstructorRepository extends BaseRepository<Instructor> implements 
     }
 
     public Instructor findByIdWithCourses(int instructorId) {
-        var query = entityManager.createQuery("SELECT i FROM Instructor i JOIN FETCH i.courses WHERE i.id = :instructorId", Instructor.class)
+        var query = entityManager.createQuery("SELECT i FROM Instructor i " +
+                        "JOIN FETCH i.courses " +
+                        "JOIN FETCH i.instructorDetail " +
+                        "WHERE i.id = :instructorId", Instructor.class)
                 .setParameter("instructorId", instructorId);
 
         return query.getSingleResult();

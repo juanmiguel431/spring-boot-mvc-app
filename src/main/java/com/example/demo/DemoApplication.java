@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import com.example.demo.DAO.CourseRepository;
-import com.example.demo.DAO.InstructorDetailRepository;
 import com.example.demo.DAO.InstructorRepository;
 import com.example.demo.models.Course;
 import com.example.demo.models.Instructor;
@@ -10,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
 import java.util.ArrayList;
 
 @SpringBootApplication
@@ -29,10 +29,15 @@ public class DemoApplication {
 
 			var instructor2 = instructorRepository.findByIdWithCourses(2);
 
-			var instructor1 = instructorRepository.findById(2);
-			var courses = instructor1.getCourses();
-			System.out.println(instructor1);
+			this.getCoursesWithTransaction(instructorRepository);
 		};
+	}
+
+
+	protected void getCoursesWithTransaction(InstructorRepository instructorRepository) {
+		var instructor1 = instructorRepository.findById(2);
+		var courses = instructor1.getCourses();
+		System.out.println(instructor1);
 	}
 
 	private static void createInstructor(InstructorRepository instructorRepository) {
