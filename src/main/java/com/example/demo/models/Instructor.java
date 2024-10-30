@@ -28,7 +28,7 @@ public class Instructor {
 
     @OneToMany(mappedBy = "instructor",
             cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH},
-            fetch = FetchType.EAGER)
+            fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Course> courses;
 

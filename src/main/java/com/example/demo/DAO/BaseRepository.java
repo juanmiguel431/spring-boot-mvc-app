@@ -22,7 +22,7 @@ public abstract class BaseRepository<T> implements IBaseRepository<T> {
     }
 
     @Override
-    public T getById(int id) {
+    public T findById(int id) {
         return entityManager.find(getType(), id);
     }
 

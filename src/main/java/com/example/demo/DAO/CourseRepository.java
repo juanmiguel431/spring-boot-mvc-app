@@ -5,6 +5,8 @@ import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class CourseRepository extends BaseRepository<Course> implements IBaseRepository<Course> {
 
@@ -16,5 +18,12 @@ public class CourseRepository extends BaseRepository<Course> implements IBaseRep
     @Autowired
     public CourseRepository(EntityManager entityManager) {
         super(entityManager);
+    }
+
+    public List<Course> findCoursesByInstructorId(int instructorId) {
+        var query = entityManager.createQuery("from Course where instructor.id = :instructorId", getType());
+        query.setParameter("instructorId", instructorId);
+
+        return query.getResultList();
     }
 }

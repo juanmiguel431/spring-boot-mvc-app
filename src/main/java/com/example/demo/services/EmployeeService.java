@@ -28,7 +28,7 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public Employee findById(int id) {
-        return employeeRepository.getById(id);
+        return employeeRepository.findById(id);
     }
 
     @Transactional

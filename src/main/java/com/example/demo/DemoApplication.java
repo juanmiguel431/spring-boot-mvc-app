@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.DAO.CourseRepository;
 import com.example.demo.DAO.InstructorDetailRepository;
 import com.example.demo.DAO.InstructorRepository;
 import com.example.demo.models.Course;
@@ -19,14 +20,18 @@ public class DemoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(InstructorRepository instructorRepository, InstructorDetailRepository instructorDetailRepository) {
+	public CommandLineRunner commandLineRunner(InstructorRepository instructorRepository, CourseRepository courseRepository) {
 		return runner -> {
 			System.out.println("Hello world");
 //			createInstructor(instructorRepository);
 
-			var instructor = instructorRepository.getById(2);
-			var courses = instructor.getCourses();
-			System.out.println(instructor);
+			var instructorCourses = courseRepository.findCoursesByInstructorId(2);
+
+			var instructor2 = instructorRepository.findByIdWithCourses(2);
+
+			var instructor1 = instructorRepository.findById(2);
+			var courses = instructor1.getCourses();
+			System.out.println(instructor1);
 		};
 	}
 
