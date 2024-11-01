@@ -1,29 +1,33 @@
 package com.example.demo.models;
 
+import jakarta.persistence.*;
+
 import java.util.List;
 
+@Entity
+@Table(name = "student")
 public class Student {
-    private int id;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "email")
     private String email;
-    private String country;
-    private String favoriteLanguage;
-    private List<String> favoriteOperativeSystems;
 
-    public Student() {
-    }
-
-    public Student(String firstName, String lastName, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-    }
-
-    public Student(int id, String firstName, String lastName, String email) {
-        this(firstName, lastName, email);
-        this.id = id;
-    }
+    @ManyToMany
+    @JoinTable(
+            name = "course_students",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private List<Course> courses;
 
     public int getId() {
         return id;
@@ -55,42 +59,5 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getFavoriteLanguage() {
-        return favoriteLanguage;
-    }
-
-    public void setFavoriteLanguage(String favoriteLanguage) {
-        this.favoriteLanguage = favoriteLanguage;
-    }
-
-    public List<String> getFavoriteOperativeSystems() {
-        return favoriteOperativeSystems;
-    }
-
-    public void setFavoriteOperativeSystems(List<String> favoriteOperativeSystems) {
-        this.favoriteOperativeSystems = favoriteOperativeSystems;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", country='" + country + '\'' +
-                ", favoriteLanguage='" + favoriteLanguage + '\'' +
-                ", favoriteOperativeSystems=" + favoriteOperativeSystems +
-                '}';
     }
 }

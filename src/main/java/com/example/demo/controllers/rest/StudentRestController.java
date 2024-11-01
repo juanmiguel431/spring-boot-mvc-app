@@ -1,7 +1,7 @@
 package com.example.demo.controllers.rest;
 
 import com.example.demo.models.ErrorResponse;
-import com.example.demo.models.Student;
+import com.example.demo.models.StudentDto;
 import jakarta.annotation.PostConstruct;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,18 +16,18 @@ import java.util.List;
 @RequestMapping("/api")
 public class StudentRestController {
 
-    private List<Student> students;
+    private List<StudentDto> students;
 
     @PostConstruct
     public void loadData() {
         students = new ArrayList<>();
-        students.add(new Student(1, "Juan Miguel", "Paulino Carpio", "juanmiguel431@gmail.com"));
-        students.add(new Student(2, "Luis Miguel", "Paulino Carpio", "luismiguel@gmail.com"));
-        students.add(new Student(3, "Eduar", "Paulino Carpio", "eduar@gmail.com"));
+        students.add(new StudentDto(1, "Juan Miguel", "Paulino Carpio", "juanmiguel431@gmail.com"));
+        students.add(new StudentDto(2, "Luis Miguel", "Paulino Carpio", "luismiguel@gmail.com"));
+        students.add(new StudentDto(3, "Eduar", "Paulino Carpio", "eduar@gmail.com"));
     }
 
     @GetMapping("/students")
-    public ResponseEntity<List<Student>> getAll() {
+    public ResponseEntity<List<StudentDto>> getAll() {
 
         return ResponseEntity.ok(students);
     }

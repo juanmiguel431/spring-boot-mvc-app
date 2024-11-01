@@ -93,4 +93,14 @@ create table reviews
         foreign key (course_id) references courses (id)
 );
 
-
+create table course_students
+(
+    course_id  int not null,
+    student_id int not null,
+    constraint course_students_pk
+        primary key (course_id, student_id),
+    constraint course_students_courses_id_fk
+        foreign key (student_id) references courses (id),
+    constraint course_students_student_id_fk
+        foreign key (student_id) references student (id)
+);

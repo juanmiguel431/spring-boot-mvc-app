@@ -1,6 +1,6 @@
 package com.example.demo.controllers;
 
-import com.example.demo.models.Student;
+import com.example.demo.models.StudentDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +27,7 @@ public class StudentController {
     @GetMapping("")
     public String showForm(Model model) {
 
-        var student = new Student();
+        var student = new StudentDto();
         student.setFirstName("John");
 
         model.addAttribute("model", student);
@@ -39,7 +39,7 @@ public class StudentController {
     }
 
     @PostMapping("")
-    public String processForm(Model model, @ModelAttribute Student student) {
+    public String processForm(Model model, @ModelAttribute StudentDto student) {
 
         model.addAttribute("model", student);
 
