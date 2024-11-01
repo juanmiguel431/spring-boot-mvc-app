@@ -3,6 +3,9 @@ package com.example.demo.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "courses")
 public class Course {
@@ -20,7 +23,19 @@ public class Course {
 //    @JsonIgnore
     private Instructor instructor;
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    @JoinColumn(name = "course_id")
+    private List<Review> reviews;
+
     public Course() {
+    }
+
+    public void addReview(Review review) {
+        if (this.reviews == null) {
+            this.reviews = new ArrayList<>();
+        }
+
+        this.reviews.add(review);
     }
 
     public Course(String title, Instructor instructor) {
