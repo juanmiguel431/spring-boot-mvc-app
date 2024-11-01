@@ -26,4 +26,11 @@ public class CourseRepository extends BaseRepository<Course> implements IBaseRep
 
         return query.getResultList();
     }
+
+    public List<Course> findCoursesAndReviewsById(int id) {
+        var query = entityManager.createQuery("from Course c join fetch c.reviews where c.id = :id", getType());
+        query.setParameter("id", id);
+
+        return query.getResultList();
+    }
 }
