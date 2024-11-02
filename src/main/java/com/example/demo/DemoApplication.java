@@ -2,9 +2,11 @@ package com.example.demo;
 
 import com.example.demo.DAO.CourseRepository;
 import com.example.demo.DAO.InstructorRepository;
+import com.example.demo.DAO.StudentRepository;
 import com.example.demo.models.Course;
 import com.example.demo.models.Instructor;
 import com.example.demo.models.InstructorDetail;
+import com.example.demo.models.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,13 +22,30 @@ public class DemoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(InstructorRepository instructorRepository, CourseRepository courseRepository) {
+	public CommandLineRunner commandLineRunner(InstructorRepository instructorRepository, CourseRepository courseRepository, StudentRepository studentRepository) {
 		return runner -> {
 			System.out.println("Hello world");
 //			createInstructor(instructorRepository);
 
-			var instructorCourses = courseRepository.findCoursesByInstructorId(2);
+			// Create Course
+			var course = new Course("Keyboard");
+			courseRepository.add(course);
 
+			// Create Student
+			var student = new Student("Julian", "Paulino", "julian_paulino@gmail.com");
+			studentRepository.add(student);
+
+			// Create Course
+//			var course = new Course("Piano");
+//			course.addStudent(student);
+//			courseRepository.add(course);
+
+//			var courseWithStudents = courseRepository.findCourseAndStudentsById(9);
+//			courseRepository.removeStudentFromCourse(9, 9);
+
+			var courseWithStudents = courseRepository.findCourseAndStudentsById(9);
+
+			var instructorCourses = courseRepository.findCoursesByInstructorId(2);
 			var instructor2 = instructorRepository.findByIdWithCourses(2);
 
 			this.getCoursesWithTransaction(instructorRepository);
