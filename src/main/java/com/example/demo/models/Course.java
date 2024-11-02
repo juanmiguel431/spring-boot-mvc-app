@@ -26,7 +26,7 @@ public class Course {
     @JoinColumn(name = "course_id")
     private List<Review> reviews;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinTable(
             name = "course_students",
             joinColumns = @JoinColumn(name = "course_id"),
@@ -35,6 +35,14 @@ public class Course {
     private List<Student> students;
 
     public Course() {
+    }
+
+    public void addStudent(Student student) {
+        if (this.students == null) {
+            this.students = new ArrayList<>();
+        }
+
+        this.students.add(student);
     }
 
     public void addReview(Review review) {
