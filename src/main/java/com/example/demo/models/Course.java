@@ -86,6 +86,14 @@ public class Course {
         this.instructor = instructor;
     }
 
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
     @Override
     public String toString() {
         return "Course{" +
