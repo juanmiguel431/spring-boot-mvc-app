@@ -77,7 +77,7 @@ create table courses
 (
     id            int auto_increment primary key,
     title         nvarchar(128) null,
-    instructor_id int           not null,
+    instructor_id int,
     constraint courses_instructors_id_fk
         foreign key (instructor_id) references instructors (id),
     constraint courses_pk unique (title)
