@@ -3,6 +3,7 @@ package com.example.demo.AOP;
 import com.example.demo.models.Course;
 import com.example.demo.models.Student;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -71,5 +72,18 @@ public class LocalLoggingAspect {
             argNames = "joinPoint,email")
     public void after(JoinPoint joinPoint, String email) {
         System.out.println("@After advice completed.");
+    }
+
+    @Around("execution(public String com.example.demo.services.FortuneService.getFortune(String))")
+    public Object aroundMethod(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+
+        var begin = System.currentTimeMillis();
+        var result = proceedingJoinPoint.proceed();
+        var end = System.currentTimeMillis();
+
+        var time = end - begin;
+        System.out.println("The process completed in " + time + " milliseconds.");
+
+        return result;
     }
 }

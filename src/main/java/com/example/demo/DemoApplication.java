@@ -7,6 +7,7 @@ import com.example.demo.models.Course;
 import com.example.demo.models.Instructor;
 import com.example.demo.models.InstructorDetail;
 import com.example.demo.models.Student;
+import com.example.demo.services.FortuneService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,10 +23,17 @@ public class DemoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(InstructorRepository instructorRepository, CourseRepository courseRepository, StudentRepository studentRepository) {
+	public CommandLineRunner commandLineRunner(InstructorRepository instructorRepository, CourseRepository courseRepository, StudentRepository studentRepository, FortuneService fortuneService) {
 		return runner -> {
 			System.out.println("Hello world");
 //			createInstructor(instructorRepository);
+
+			try {
+				var fortune = fortuneService.getFortune("Juan Miguel");
+				System.out.println(fortune);
+			} catch (Throwable e) {
+				System.out.println(e.getMessage());
+			}
 
 			var edward = studentRepository.findById(5);
 
