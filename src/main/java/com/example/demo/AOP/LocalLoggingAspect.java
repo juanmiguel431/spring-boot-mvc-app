@@ -3,10 +3,7 @@ package com.example.demo.AOP;
 import com.example.demo.models.Course;
 import com.example.demo.models.Student;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -55,5 +52,14 @@ public class LocalLoggingAspect {
         var firstName = student.getFirstName();
         student.setFirstName(firstName + " - modified during AOP Proxy.");
 
+    }
+
+    @AfterThrowing(
+            pointcut = "execution(public com.example.demo.models.Student com.example.demo.DAO.StudentRepository.findByEmail(String)) && args(email)",
+            throwing = "exception",
+            argNames = "joinPoint,email,exception"
+    )
+    public void afterThrowing(JoinPoint joinPoint, String email, Exception exception) {
+        System.out.println("After trowing the exception: " + exception.getMessage());
     }
 }

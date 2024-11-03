@@ -26,4 +26,11 @@ public class StudentRepository extends BaseRepository<Student> implements IBaseR
 
         return query.getResultList();
     }
+
+    public Student findByEmail(String email) {
+        var query = entityManager.createQuery("from Student e where e.email = :email", Student.class);
+        query.setParameter("email", email);
+
+        return query.getSingleResult();
+    }
 }

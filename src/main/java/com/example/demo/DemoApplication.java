@@ -27,9 +27,13 @@ public class DemoApplication {
 			System.out.println("Hello world");
 //			createInstructor(instructorRepository);
 
-			// Create Course
-			var course = new Course("Keyboard");
-			courseRepository.add(course);
+			var edward = studentRepository.findById(5);
+
+			try	{
+				var studentByEmail = studentRepository.findByEmail("juanmiguel431@gmail.com");
+			} catch (Exception e) {
+				System.out.println("More than one student found");
+			}
 
 			// Create Student
 			var student = new Student("Julian", "Paulino", "julian_paulino@gmail.com");
