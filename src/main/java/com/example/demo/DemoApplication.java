@@ -45,8 +45,8 @@ public class DemoApplication {
 			}
 
 			// Create Student
-			var student = new Student("Julian", "Paulino", "julian_paulino@gmail.com");
-			studentRepository.add(student);
+//			var student = new Student("Julian", "Paulino", "julian_paulino@gmail.com");
+//			studentRepository.add(student);
 
 			// Create Course
 //			var course = new Course("Piano");
