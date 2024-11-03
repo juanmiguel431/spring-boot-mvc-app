@@ -3,6 +3,7 @@ package com.example.demo.AOP;
 import com.example.demo.models.Course;
 import com.example.demo.models.Student;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -42,5 +43,14 @@ public class LocalLoggingAspect {
         for (var arg : args) {
             System.out.println(arg);
         }
+    }
+
+    @AfterReturning(
+            pointcut = "execution(public Object com.example.demo.DAO.BaseRepository.findById(int)) && args(studentId)",
+            returning = "student",
+            argNames = "joinPoint,studentId,student")
+    public void afterGetStudent(JoinPoint joinPoint, int studentId, Student student) {
+        System.out.println("After getting studentId " + studentId);
+
     }
 }
