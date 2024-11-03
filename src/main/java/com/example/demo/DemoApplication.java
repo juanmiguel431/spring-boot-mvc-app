@@ -30,7 +30,8 @@ public class DemoApplication {
 			var edward = studentRepository.findById(5);
 
 			try	{
-				var studentByEmail = studentRepository.findByEmail("juanmiguel431@gmail.com");
+//				var studentByEmail = studentRepository.findByEmail("juanmiguel431@gmail.com"); // Exception - Too many rows
+				var studentByEmail = studentRepository.findByEmail("eduar_paulino@gmail.com"); // Success
 			} catch (Exception e) {
 				System.out.println("More than one student found");
 			}

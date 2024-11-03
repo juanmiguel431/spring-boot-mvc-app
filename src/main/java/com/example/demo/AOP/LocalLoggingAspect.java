@@ -54,12 +54,22 @@ public class LocalLoggingAspect {
 
     }
 
+    @Pointcut("execution(public com.example.demo.models.Student com.example.demo.DAO.StudentRepository.findByEmail(String)) && args(email)")
+    private void findStudentByEmail(String email) {}
+
     @AfterThrowing(
-            pointcut = "execution(public com.example.demo.models.Student com.example.demo.DAO.StudentRepository.findByEmail(String)) && args(email)",
+            pointcut = "findStudentByEmail(email)",
             throwing = "exception",
             argNames = "joinPoint,email,exception"
     )
     public void afterThrowing(JoinPoint joinPoint, String email, Throwable exception) {
         System.out.println("After trowing the exception: " + exception.getMessage());
+    }
+
+    @After(
+            value = "findStudentByEmail(email)",
+            argNames = "joinPoint,email")
+    public void after(JoinPoint joinPoint, String email) {
+        System.out.println("@After advice completed.");
     }
 }
