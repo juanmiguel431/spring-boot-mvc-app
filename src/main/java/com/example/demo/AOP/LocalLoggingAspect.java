@@ -29,7 +29,8 @@ public class LocalLoggingAspect {
 //    @Before("execution(public void com.example.demo.DAO.BaseRepository.add(*))")
 //    @Before("execution(public void add(Object))")
 //    @Before("execution(public void add(*))")
-    @Before("execution(public void com.example.demo.DAO.BaseRepository.add(*)) && args(student)")
+//    @Before("execution(public void com.example.demo.DAO.BaseRepository.add(*)) && args(student)")
+    @Before(AopExpression.addNewStudent)
     public void beforeAddStudent(JoinPoint joinPoint, Student student) {
         System.out.println("Before during LocalLoggingAspect - StudentRepository");
     }
