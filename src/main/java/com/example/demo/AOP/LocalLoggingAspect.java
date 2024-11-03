@@ -33,5 +33,14 @@ public class LocalLoggingAspect {
     @Before(AopExpression.addNewStudent)
     public void beforeAddStudent(JoinPoint joinPoint, Student student) {
         System.out.println("Before during LocalLoggingAspect - StudentRepository");
+
+        var methodSignature = joinPoint.getSignature();
+        System.out.println(methodSignature.toString());
+
+        var args = joinPoint.getArgs();
+
+        for (var arg : args) {
+            System.out.println(arg);
+        }
     }
 }
