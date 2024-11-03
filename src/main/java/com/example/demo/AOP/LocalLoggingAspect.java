@@ -52,5 +52,8 @@ public class LocalLoggingAspect {
     public void afterGetStudent(JoinPoint joinPoint, int studentId, Student student) {
         System.out.println("After getting studentId " + studentId);
 
+        var firstName = student.getFirstName();
+        student.setFirstName(firstName + " - modified during AOP Proxy.");
+
     }
 }
