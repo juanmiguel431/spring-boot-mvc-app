@@ -59,7 +59,7 @@ public class LocalLoggingAspect {
             throwing = "exception",
             argNames = "joinPoint,email,exception"
     )
-    public void afterThrowing(JoinPoint joinPoint, String email, Exception exception) {
+    public void afterThrowing(JoinPoint joinPoint, String email, Throwable exception) {
         System.out.println("After trowing the exception: " + exception.getMessage());
     }
 }
