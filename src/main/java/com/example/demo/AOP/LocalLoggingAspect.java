@@ -6,11 +6,13 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Aspect
+@Order(1)
 @Component
-public class LoggingAspect {
+public class LocalLoggingAspect {
     @Pointcut("execution(public void com.example.demo.DAO.BaseRepository.add(Object))")
     private void forCourseRepositoryAdd(){}
 
@@ -19,16 +21,16 @@ public class LoggingAspect {
         System.out.println("Executing @Before advice on CourseRepository.");
     }
 
-    @Before("forCourseRepositoryAdd()")
-    public void beforeAddCourse2(JoinPoint joinPoint) {
-        System.out.println("Executing @Before 2 advice on CourseRepository.");
-    }
+//    @Before("forCourseRepositoryAdd()")
+//    public void beforeAddCourse2(JoinPoint joinPoint) {
+//        System.out.println("Executing @Before 2 advice on CourseRepository.");
+//    }
 
 //    @Before("execution(public void com.example.demo.DAO.BaseRepository.add(*))")
 //    @Before("execution(public void add(Object))")
 //    @Before("execution(public void add(*))")
     @Before("execution(public void com.example.demo.DAO.BaseRepository.add(*)) && args(student)")
     public void beforeAddStudent(JoinPoint joinPoint, Student student) {
-        System.out.println("Executing @Before advice on StudentRepository.");
+        System.out.println("Before during LocalLoggingAspect - StudentRepository");
     }
 }
